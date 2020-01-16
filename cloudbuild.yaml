@@ -1,11 +1,11 @@
 steps:
   - name: 'gcr.io/cloud-builders/docker'
-    args: ['build', '-t', 'eu.gcr.io/$PROJECT_ID/cloudrun-hello', '.']
+    args: ['build', '-t', 'eu.gcr.io/$PROJECT_ID/jnonino-demo', '.']
 
   - name: "gcr.io/cloud-builders/docker"
-    args: ["push", "eu.gcr.io/$PROJECT_ID/cloudrun-hello"]
+    args: ["push", "eu.gcr.io/$PROJECT_ID/jnonino-demo"]
 
-  - name: 'eu.gcr.io/$PROJECT_ID/cloudrun-hello'
+  - name: 'eu.gcr.io/$PROJECT_ID/jnonino-demo'
     args: ['pytest']
 
   - name: "gcr.io/cloud-builders/gcloud"
@@ -14,9 +14,9 @@ steps:
         "beta",
         "run",
         "deploy",
-        "cloudrun-hello",
+        "jnonino-demo",
         "--image",
-        "eu.gcr.io/$PROJECT_ID/cloudrun-hello",
+        "eu.gcr.io/$PROJECT_ID/jnonino-demo",
         "--region",
         "europe-west1",
         "--allow-unauthenticated",
